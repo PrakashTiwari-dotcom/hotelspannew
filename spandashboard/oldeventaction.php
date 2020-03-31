@@ -11,13 +11,7 @@ if(!isset($_SESSION['username'])){
 
          if(isset($_POST['submit'])){
                  
-                $title = $_POST['title'];
-              //  print_r($title);
-                $description =$_POST['description'];
-                $date =$_POST['date'];
-                $time =$_POST['time'];
-                $venue=$_POST['venue'];
-                $organizer=$_POST['organizer'];
+                            
                 $files=$_FILES['file'];
                 
                 $filename =$files['name'];
@@ -25,7 +19,7 @@ if(!isset($_SESSION['username'])){
                 $fileerror = $files['error'];
                 $filetmp = $files['tmp_name'];
                 $fileext =explode('.',$filename);
-                print_r($fileext);
+                //print_r($fileext);
                 $filecheck = strtolower(end($fileext)); // file ko extension lai lowercase ma convert gareko
                 // print_r($filecheck);
                 $fileextstored = array('png','jpg','jpeg');
@@ -34,11 +28,11 @@ if(!isset($_SESSION['username'])){
                         $destinationfile = '../uploads/events/'.$filename; //yedi condition satisfy vayo vani upload vanni folder ma gayera $filename save hunxa 
                         move_uploaded_file($filetmp,$destinationfile);
                                 // -------------------------------------------------------------
-                        $sql ="INSERT INTO events(title,description,image,date,time,venue,organizer) VALUES ('$title','$description','$destinationfile','$date','$time','$venue','$organizer')";
+                        $sql ="INSERT INTO events(image) VALUES ('$destinationfile')";
                         $result =mysqli_query($conn,$sql);
                                         if($result){
                                         echo "data inserted Successfully";
-                                        header('location:                                                                                                                                                                                                                                                                                                                                                                                                                                                       event.php')
+                                        header('location: event.php');
                                         ?>
                                         <?php
                                    }

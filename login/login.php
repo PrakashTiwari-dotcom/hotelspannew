@@ -7,7 +7,7 @@ session_start();
 <?php 
    if(isset($_SESSION['username']))
    {
-    header('location:../spandashboard/event.php');
+    header('location:../spandashboard/gallery.php');
 
      ?>
      
@@ -166,7 +166,7 @@ input {
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 <div class="container">
-<img style="height:auto; width:20%; margin-left:40%; margin-top:5%;" src="../image/logo_span.png" alt="">
+<img style="height:auto; width:20%; margin-left:40%; margin-top:5%;" src="../image/spanlogo.png" alt="">
     <div class="logo ">HOTEL SPAN</div>
     
     <div class="login-item">

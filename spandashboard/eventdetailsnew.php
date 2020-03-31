@@ -1,3 +1,8 @@
+<?php 
+$id = $_GET['id']; //why doesn't it work with post method
+
+
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -18,23 +23,10 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/responsive.css">
         <style>
-         *{
+        *{
             margin:0;
             padding:0;
-        
-        } 
-          .father{
-            height:250px;
-            position:relative;
-          }
-          .child{
-            height:250px;
-            width:100%;
-            position:absolute;
-            left:0;
-            top:3%;
-            bott
-          }
+        }
         </style>
         
     </head>
@@ -46,7 +38,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <a class="navbar-brand logo_h" href="index.html"><img src="image/logo_span.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>  
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -56,10 +48,10 @@
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li> 
                     <li class="nav-item"><a class="nav-link" href="../index.html#abt">About us</a></li>
                     <li class="nav-item"><a class="nav-link" href="../index.html#acmdtn">Accomodation</a></li>
-                    <li class="nav-item "><a class="nav-link" href="uigallery.php">Gallery</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="uigallery.html">Gallery</a></li>
                     
                   <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
-                  <li class="nav-item active"><a class="nav-link" href="../contact.html">events</a></li>
+                  <li class="nav-item"><a class="nav-link" href="displayevent.php">Events</a></li>
                   <li class="nav-item"><a class="nav-link" href="../login/login.php">Login</a></li>
                 </ul>
             </div> 
@@ -68,82 +60,64 @@
 </header>
 <!--================Header Area =================-->
         
-        <!--================Breadcrumb Area =================-->
-        <section class="breadcrumb_area">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
-            <div class="container">
-                <div class="page-cover text-center">
-                    <h2 class="page-cover-tittle">Events</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="../index.html">Home</a></li>
-                        <li class="active">Events</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-        <!--================Breadcrumb Area =================-->
+       
         
         <!--================Breadcrumb Area =================-->
         <section class="gallery_area section_gap">
             <div class="container">
-                <div class="section_title text-center">
-                    <h2 class="title_color"> Our Events</h2>
-                    <p>Who are in extremely love with eco friendly system.</p>
-                </div>
-                <div class="row " id="">
-                  
-                 
-                        <!-- ----start display events (fetching from database and displaying on page) -->
-                                        
-                                                               
-                        <?php 
-                   $conn = mysqli_connect("localhost","root","","hotelspan");
-                   $sql ="SELECT `title`,`description`,`date`,TIME_FORMAT(`time`,'%H %i %s %p') as `time`,`venue`,`id`,`image`,`organizer` FROM events";
-                   $result = mysqli_query($conn,$sql);
-                   if($result){
+                              
+                                  <!-- ----start display events (fetching from database and displaying on page) -->
+                                                                                             
+             <?php 
+                $conn = mysqli_connect("localhost","root","","hotelspan");
+               
+               $sql ="SELECT `title`,`description`,`date`,TIME_FORMAT(`time`,'%H %i %s %p') as `time`,`description`,`venue`,`id`,`image`,`organizer` FROM events where id =$id ";
+                $result =mysqli_query($conn,$sql);
+                if($result){
+                    while($row = mysqli_fetch_assoc($result)){
 
-                       while($row = mysqli_fetch_assoc($result)){
-                            $title=$row['title'];
-                            $description =$row['description'];
-                            $date = $row['date'];
-                            $time = $row['time'];
-                            $venue = $row['venue'];
-                            $id = $row['id'];
-                            $image = $row['image'];
-                            $organizer = $row['organizer'];
-                        ?>
-                        <!-- dddddd dd -->
-                      
-                <!--display event in page ---------------------- -->
-             <div class="card col-md-3 col-sm-12  text-center  "  style="border:2px solid #eee;margin:2.5%;">
-                 <div class="card-body father"  > 
-                   <img class=" child"style="height:250px;width:100%;" src="<?php echo $image;?>" >
-                </div>
-                <div class="card-footer text-muted ">
-                    <h5 class=" text-success text-white"><?php echo $title ?></h5>
-                       <p ><?php echo "Date: ".$date ?></p>
-                      <p ><?php echo "Time: ".$time ?></p>
-                      <p ><?php echo "Venue: ".$venue ?></p>
-                      <p ><?php echo "Organizer: ".$organizer ?></p>
-                      
-                    <a href="eventdetailsnew.php?id=<?php  global $id; echo $id; ?>" class="btn btn-warning text-white " style="margin-bottom:10px;">view details</a>
-                </div>
-              
-             </div>
-                   
-                    <?php 
-                       }
-                      }
-                 ?>
+                $title=$row['title'];   
+                $image=$row['image'];
+                $description =$row['description'];
+                $date = $row['date'];
+                $time = $row['time'];
+                $venue = $row['venue'];
+             ?> 
+                <div class=" row">
+                <!-- ----fetching from database and displaying details on page -->
+                     <div class="col-md-12  " >
+                         <div  class="text-center">
+                             <h2 class="text-dark "><?php echo $title?></h2>
+                             <p class="text-primary  font-weight-bold"> <?php echo "Date: ".$date;  ?> &amp; <?php echo "Time: ".$time ?></p>
+                         </div>
+                         <hr>
+                  
+                         <div class="row">
+                                <div class="col-md-12 col-sm-12 text-center" >
+                                    <div class="row">
+                                        <div class="col-md-8 ">
+                                              <p  class=""style="text-align:justify"> <?php echo $description;  ?> </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                              <img  style="height:300px;width:100%;" src="<?php echo $image;?>" >
+                                              <span class="text-primary font-weight-bold "><?php echo "Venue: ".$venue?></span>
+                                        </div>
+                                    </div>
+                                 </div> 
+                                                <?php 
+                                                    }
+                                                }
+                                        ?>
                              <!-- --------------------------------------- -->
-                 
+                        </div>
+                     </div>
                 </div>
             </div>
         </section>
         <!--================Breadcrumb Area =================-->
         
-               <!--================ start footer Area  =================-->	
-               <footer class="footer-area section_gap">
+        <!--================ start footer Area  =================-->	
+        <footer class="footer-area section_gap">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3  col-md-6 col-sm-6">
@@ -158,10 +132,10 @@
                             <div class="row">
                                 <div class="col-4">
                                     <ul class="list_style">
-                                        <li><a href="../index.html">Home</a></li>
-                                        <li><a href="../index.html#abt">About</a></li>
-                                        <li><a href="../index.html#acmdtn">Accomodation</a></li>
-                                        <li><a href="../contact.html">Contact</a></li>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="index.html#acmdtn">Accomodation</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-4">
