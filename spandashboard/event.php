@@ -43,6 +43,10 @@ if(!isset($_SESSION['username'])){
  
 padding:40% 5% 10% 5% !important; 
   }
+
+  .responsiveTable{
+  overflow-x: scroll;
+  }
 }
 </style>
 
@@ -69,9 +73,7 @@ padding:40% 5% 10% 5% !important;
       <!-- Divider -->
       <hr class="sidebar-divider my-5">
       
-      
-       
-
+           
       <!-- Heading -->
       <div class="sidebar-heading">
         Addons
@@ -219,7 +221,7 @@ padding:40% 5% 10% 5% !important;
       </div>
     </div>
     <!-- ---------------- -->
-    <div class="container-fluid">
+    <div class="container-fluid responsiveTable">
     
       <div class="row col-md-12">
       <table class="table table-bordered">

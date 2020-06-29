@@ -195,7 +195,7 @@ input {
         </div>
 
         <div class="form-field">
-          <input type="submit" value="Log in">
+          <input type="submit" name="submit" valvalue="Log in">
         </div>
       </form>
     </div>

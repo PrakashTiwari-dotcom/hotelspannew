@@ -17,7 +17,24 @@
         <!-- main css -->
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/responsive.css">
-        
+        <style>
+            .containerGallery{
+                display:flex;
+                flex-wrap: wrap;
+                background-color:#EAF0F1;
+                justify-content:space-around;
+                padding: 20px 0;
+                
+                
+            }
+
+            .containerGallery   img {
+                max-width:100%;
+                max-height:250px;
+                border-radius:10px;
+                margin-top: 15px;
+            }
+        </style>
     </head>
     <body>
 <!--================Header Area =================-->
@@ -25,7 +42,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <a class="navbar-brand logo_h" href="index.html"><img src="image/logo_span.png" alt=""></a>
+            <a class="navbar-brand " href="index.html"><img class="logo_h" src="../image/spanlogo.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar"></span>  
                 <span class="icon-bar"></span>
@@ -66,12 +83,13 @@
         
         <!--================Breadcrumb Area =================-->
         <section class="gallery_area section_gap">
-            <div class="container">
-                <div class="section_title text-center">
+        <div class="section_title text-center">
                     <h2 class="title_color"> Hotel Gallery</h2>
                     <p>Who are in extremely love with eco friendly system.</p>
                 </div>
-                <div class="row " id="">
+                
+            <div class="containerGallery">
+               
                   
                  
                         <!-- ----start display events (fetching from database and displaying on page) -->
@@ -87,23 +105,21 @@
                                   
                                   $image = $row['image'];
                                   
-                                  
-                              ?>
+                         ?>
                             
                       <!--display event in page ---------------------- -->
-                   <div class=" col-md-3 col-sm-12  text-center  "  style=" height:300px; border:0px solid blue;margin:2.5%;">
-                       
-                         <img style="height:250px;width:100%;" src="<?php echo $image;?>" >
+                
+                       <a href="<?php echo $image ?>" target="_blank"> 
+                         <img  src="<?php echo $image;?>"  ></a>
                                                              
-                   </div>
-                         
-                          <?php 
+               
+                      <?php 
                              }
                             }
                        ?>
                              <!-- --------------------------------------- -->
                  
-                </div>
+                
             </div>
         </section>
         <!--================Breadcrumb Area =================-->

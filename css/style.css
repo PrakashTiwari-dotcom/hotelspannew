@@ -335,7 +335,21 @@ button:focus {
 
 .navbar .logo_h {
   padding-top: 0px;
+  width: 90px;
+  height: 90px;
+ 
 }
+
+/* responsive logo */
+@media (max-width: 767px) {
+  .navbar .logo_h {
+ 
+  margin-top: 5px;
+  
+  }
+}
+
+
 
 .navbar .menu_nav .nav-item .nav-link {
   font: 500 12px/80px "Poppins", sans-serif;
